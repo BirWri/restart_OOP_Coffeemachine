@@ -8,15 +8,19 @@ money = MoneyMachine()
 
 machine_on = True
 while machine_on:
-
+    # Ask user for their choice
     order_name = input(f"What would you like? ({menu.get_items()}): ").lower()
 
+    # prints the available resources of the coffee machine or turn the machine off
     if order_name == "report":
         coffeemaker.report()
         money.report()
     elif order_name == "off":
         machine_on = False
     else:
+        # Variable to store the drinks attributes. If no drink exist, ask for a new drink
+        # input. If drink exist and the resources are enough, and the user provides enough
+        # money - make the drink.
         order = menu.find_drink(order_name)
 
         if not order:
